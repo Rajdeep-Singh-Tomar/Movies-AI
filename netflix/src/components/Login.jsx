@@ -2,8 +2,9 @@ import React, { useRef } from 'react'
 import Header from './Header'
 import {useState} from 'react'
 import {checkValiData} from "../utils/validator";
+import {  useNavigate } from 'react-router-dom';
 
-import {  createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import {  createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 
 const Login = () => {
@@ -13,9 +14,10 @@ const Login = () => {
    const handlesignin =()=>{
     setsignin(!signin)
    }
-
+   const name = useRef(null)
    const email = useRef(null);
    const password = useRef(null);
+  
 
    const handleclick=()=>{
     const message = checkValiData(email.current.value, password.current.value)
@@ -27,9 +29,12 @@ const Login = () => {
       .then((userCredential) => {
    
       const user = userCredential.user;
-      console.log(user)
+        return updateProfile(user, {
+        displayName: name.current.value,
+      });
+    })
       
-      })
+      
      .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -41,7 +46,7 @@ const Login = () => {
   .then((userCredential) => {
     
     const user = userCredential.user;
-   console.log(user)
+  
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -61,7 +66,7 @@ const Login = () => {
        <div >
         <form onSubmit={(e)=>e.preventDefault()} className="bg-black  p-8 absolute my-42 w-3/12 mx-auto right-0 left-0  opacity-95" >
           <h1 className="text-white text-3xl font-bold"> 
-            {signin?"SIGN IN":"SIGN UP"} </h1>{signin?"": <input className="border border-amber-50 m-2 p-2 mt-5  bg-gray-500 text-amber-50 w-full rounded-1xl" type="text" placeholder="name" />}
+            {signin?"SIGN IN":"SIGN UP"} </h1>{signin?"": <input ref={name} className="border border-amber-50 m-2 p-2 mt-5  bg-gray-500 text-amber-50 w-full rounded-1xl" type="text" placeholder="name" />}
           <input ref={email} className="border border-amber-50 m-2 p-2 mt-5 bg-gray-500 text-amber-50 w-full rounded-1xl" type="text" placeholder="email adress" />
           <input ref={password} className="border border-amber-50 m-2 p-2  bg-gray-500 text-amber-50 w-full rounded-1xl" type="password"  placeholder="password" />
           <p className='text-red-600'>{errorMessage}</p>
