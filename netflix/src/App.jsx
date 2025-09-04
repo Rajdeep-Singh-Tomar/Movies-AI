@@ -13,16 +13,18 @@ function App() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
   useEffect(()=>{
-  onAuthStateChanged(auth, (user) => {
+   const unsubscribe = onAuthStateChanged(auth, (user) => {
   if (user) {
     const {uid,email,displayName} = user;
     dispatch(addUser({uid:uid,email:email,displayName:displayName}));
     navigate("/browser")
-  } else {
+   } else {
    dispatch(removeUser());
    navigate("/");
-  }
-});
+    }
+   });
+
+   return() => unsubscribe();
   },[])
 
   return (

@@ -43,21 +43,22 @@ const Login = () => {
 
      }
      else{signInWithEmailAndPassword(auth,email.current.value, password.current.value)
-  .then((userCredential) => {
+    .then((userCredential) => {
     
     const user = userCredential.user;
   
-  })
-  .catch((error) => {
+    })
+    .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-  });}
+     seterrorMessage(error.code+"-"+ error.message)
+    });}
     
-   }
+    }
 
   return (
-    <div>
-      <div><Header/></div>
+    <div className=''>
+      <div className='absolute z-1 w-full'><Header/></div>
        <div className="absolute">
       <img src="https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_large.jpg"
        alt="back image"  />

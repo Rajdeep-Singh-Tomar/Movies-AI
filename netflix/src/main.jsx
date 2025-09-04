@@ -7,7 +7,7 @@ import App from './App.jsx'
 import appStore from './utils/appStore.js'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  
     
    <Provider store={appStore}>
     <BrowserRouter>
@@ -16,5 +16,5 @@ createRoot(document.getElementById('root')).render(
     </Provider>
    
     
-  </StrictMode>,
+ 
 )
