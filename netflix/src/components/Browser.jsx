@@ -1,5 +1,6 @@
 
 import useNowPlayingMovie from '../hooks/useNowPlayingMovie'
+import usePopularMovie from '../hooks/usePopularMovie';
 import Header from './Header'
 import MainComponent from './MainComponent';
 import SecondryComponent from './SecondryComponent';
@@ -8,6 +9,7 @@ import SecondryComponent from './SecondryComponent';
 const Browser = () => {
 
 useNowPlayingMovie();
+usePopularMovie();
 
  
   return (

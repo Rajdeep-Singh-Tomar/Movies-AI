@@ -26,7 +26,7 @@ const VideoBg = ({ movieid }) => {
   }, [])
 
   return (
-    <div>
+    <div >
       <iframe 
       className='w-screen aspect-video'
         src={"https://www.youtube.com/embed/"+trailerVid+"?&autoplay=1&mute=1"}
