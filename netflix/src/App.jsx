@@ -9,6 +9,7 @@ import {useDispatch} from 'react-redux';
 import { addUser, removeUser } from './utils/useSlice';
 
 
+
 function App() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -32,12 +33,13 @@ function App() {
         <Routes>
         <Route
          path="/"
-          element = <Login/> />
+          element = {<Login/> }/>
 
           <Route
          path="/browser"
-          element = <Browser/> />
-         
+          element = {<Browser/> }/>
+
+        
            
           
      </Routes>
