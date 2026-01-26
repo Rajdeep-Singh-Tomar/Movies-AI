@@ -7,6 +7,7 @@ import Browser from './components/Browser'
 import { Route,Routes, useNavigate } from 'react-router-dom'
 import {useDispatch} from 'react-redux';
 import { addUser, removeUser } from './utils/useSlice';
+import ShowMovie from './components/ShowMovie';
 
 
 
@@ -39,6 +40,9 @@ function App() {
          path="/browser"
           element = {<Browser/> }/>
 
+            <Route
+         path="/movie"
+          element = {<ShowMovie/> }/>
         
            
           
