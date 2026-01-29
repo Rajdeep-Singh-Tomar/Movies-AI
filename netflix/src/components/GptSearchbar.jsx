@@ -24,7 +24,7 @@ const handleSearchClick=async()=>{
     console.log("Searching for:", query)
 
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite"})
 
    
     const prompt = `act as a movie recommendation system and suggest some movie for this query : "${query}".
