@@ -1,8 +1,8 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import {SECRET_KEY} from './env';
 
 
-const genAI = new GoogleGenerativeAI(SECRET_KEY);
+
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_SECRET_KEY);
 
 export default genAI;
 
